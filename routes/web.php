@@ -6,6 +6,20 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('ping', function (){
+
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us6'
+    ]);
+
+    $response = $mailchimp->lists->getAllLists();
+    ddd($response);
+
+});
+
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
 Route::get('posts/{post:slug}', [PostsController::class, 'show']);
