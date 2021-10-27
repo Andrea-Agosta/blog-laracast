@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
